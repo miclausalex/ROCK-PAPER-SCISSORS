@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+
+
+using namespace std;
+
+void displayMenu()
+{
+	cout<<"Rock Paper Scisors SHOOT!\n";
+	cout<<"Choose your choise: \n";
+	cout<<"1)Rock\n2)Paper\n3)Scissors\n";
+	cout<<"What do you choose? \n";
+}
+
+int userChoise(int userchoise)
+{
+	int user=userchoise;
+	if(user==1)
+		{
+			cout<<"You choose rock\n";
+			return user;
+		}
+	else if(user==2)
+		{
+			cout<<"You choose paper\n";
+			return user;
+		}
+	else
+	{
+		cout<<"You choose scissors\n";
+		return user;
+	}
+}
+int comChoise(int comchoise)
+{
+	int com=comchoise;
+	if(com==1)
+		{
+			cout<<"COM chose rock\n"<<endl;
+			return com;
+		}
+	else if(com==2)
+		{
+			cout<<"COM chose paper\n"<<endl;
+			return com;
+		}
+	else
+	{
+		cout<<"COM chose scissors\n"<<endl;
+		return com;
+	}
+}
+int comChoiseNum()
+{
+	srand (time(NULL));
+	int c=rand()%3;
+	return c;
+}
+void winner(int choise, int com)
+{
+	int wchoise=choise;
+	int wcom=com;
+	if(wchoise==wcom)
+	{
+		cout<<"It's a draw\n";
+	}
+	else if (wchoise==1)
+	{
+		if (wcom==2)
+			cout<<"COM wins\nYou LOSE";
+		else
+			cout<<"You win\n";
+	}
+	else if (wchoise==2)
+	{
+		if (wcom==1)
+			cout<<"You win\n";
+		else
+			cout<<"COM wins\nYou LOSE";
+	}
+	else if (wchoise==3)
+	{
+		if (wcom==1)
+			cout<<"COM wins\nYou LOSE";
+		else
+			cout<<"You win\n";
+	}
+	cout<<endl;
+}
+int main(int argc, char **argv)
+{
+	int choise,com;
+	char play='y';
+	while (play=='y')
+	{
+	displayMenu();
+	cin>>choise;
+	choise=userChoise(choise);
+	com=comChoise(comChoiseNum());
+	winner(choise,com);
+	cout<<"YOU WANT TO PLAY AGAIN Y/N ?\n"<<endl;
+	cin>>play;
+	system("CLS");
+	}
+	cout<<"See you next time";
+}
